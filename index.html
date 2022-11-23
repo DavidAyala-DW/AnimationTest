@@ -89,7 +89,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <div class="min-h-[200px]"></div>
-    <div id="set-height" class="block h-[28500px] relative trigger">
+    <div id="set-height" class="block h-[320000px] relative trigger">
 
       <div class="sticky top-0 w-full h-screen bg-neutral-800">
         <div class="relative w-full h-full flex flex-col justify-center items-center">
@@ -105,7 +105,7 @@
           <div id="animate" class="absolute invisible z-[3] inset-0 w-full h-full">
 
             <video mute pause preload="auto" class="w-full" id="v0">
-              <source src="https://www.apple.com/media/us/mac-pro/2013/16C1b6b5-1d91-4fef-891e-ff2fc1c1bb58/videos/macpro_main_desktop.mp4" type="video/mp4">
+              <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
             </video>    
 
           </div>
@@ -240,7 +240,7 @@
           console.log(video.duration);
 
           // Build ScrollMagic Scene
-          new ScrollMagic.Scene({triggerElement: ".trigger", duration: 23500, offset: 3000})
+          new ScrollMagic.Scene({triggerElement: ".trigger", duration: 300000, offset: 3000})
           .setTween(video, 1, {
                           currentTime: videoDuration,
                           ease: Quad.easeOut,
