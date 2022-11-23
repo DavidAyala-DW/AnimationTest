@@ -89,7 +89,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <div class="min-h-[200px]"></div>
-    <div id="set-height" class="block h-[10500px] relative trigger">
+    <div id="set-height" class="block h-[28500px] relative trigger">
 
       <div class="sticky top-0 w-full h-screen bg-neutral-800">
         <div class="relative w-full h-full flex flex-col justify-center items-center">
@@ -104,9 +104,9 @@
 
           <div id="animate" class="absolute invisible z-[3] inset-0 w-full h-full">
 
-            <video class="w-full" id="v0" tabindex="0" autobuffer="autobuffer" preload="preload">
+            <video mute pause preload="auto" class="w-full" id="v0">
               <source src="/Danza - 46012.mp4" type="video/mp4">
-            </video>
+            </video>    
 
           </div>
 
@@ -240,12 +240,11 @@
           console.log(video.duration);
 
           // Build ScrollMagic Scene
-          new ScrollMagic.Scene({triggerElement: ".trigger", duration: 5000, offset: 3000})
+          new ScrollMagic.Scene({triggerElement: ".trigger", duration: 14000, offset: 3000})
           .setTween(video, 1, {
                           currentTime: videoDuration,
                           ease: Quad.easeOut,
-                          overwrite:true,
-                          pause:true
+                          overwrite:true
           }) // Add tween to the scene
           .addIndicators({name: "video play"}) // Add indicators to the scrollbar							
           .addTo(controller); // Add scene to the controller
