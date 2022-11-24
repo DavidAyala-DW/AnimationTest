@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "gsap": "^3.11.3",
+    "lottie-web": "^5.9.6",
     "scrollmagic": "^2.0.8",
     "scrollmagic-plugins": "^1.0.8"
   }

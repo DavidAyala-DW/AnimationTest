@@ -49,36 +49,6 @@
         visibility: hidden;
       }
 
-      .heading{
-        top: -100%;
-        opacity: 0;
-      }
-
-      .text_2{
-        opacity: 1;
-        bottom: 30%
-      }
-
-      .text_2-2{
-        opacity: 1;
-        bottom: 60%
-      }
-
-      .text_2-3{
-        opacity: 1;
-        bottom: 65%
-      }
-
-      .text_2-4{
-        opacity: 1;
-        bottom: 65%
-      }
-
-      .text_2-5{
-        opacity: 0;
-        bottom: 200%
-      }
-
     </style>
 
     <script src="/ScrollMagic.min.js"></script>
@@ -87,170 +57,33 @@
     <script src="/animation.gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js" integrity="sha512-yAr4fN9WZH6hESbOwoFZGtSgOP+LSZbs/JeoDr02pOX4yUFfI++qC9YwIQXIGffhnzliykJtdWTV/v3PxSz8aw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.8.1/smooth-scrollbar.js" integrity="sha512-yn9N2uBs4OocMUaJ9wZK6ELv+qXIULoRa7IvOsGz2wqWQRt8mNqU1L2I9Fau24PPxEKlGxuEDkRKvsanwAWUYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <div class="min-h-[200px]"></div>
-    <div id="set-height" class="block h-[320000px] relative trigger">
+    
+    <div id="set-height" class="block h-[23000px] relative trigger">
 
       <div class="sticky top-0 w-full h-screen bg-neutral-800">
         <div class="relative w-full h-full flex flex-col justify-center items-center">
-          
-          <div id="animate0" class="absolute z-[2] inset-0 w-full h-full">
-            <img class="object-contain w-full" src="/image-removebg-preview (3).png" alt="">
-          </div>
 
-          <h1 id="heading" class="text-white text-3xl font-semibold absolute top-[50%] left-[30%] w-[40%] z-[3] text-center">
-            Smartest Shoes That Hug Your Heels
-          </h1>
-
-          <div id="animate" class="absolute invisible z-[3] inset-0 w-full h-full">
-
-            <video mute pause preload="auto" class="w-full" id="v0">
-              <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-            </video>    
+          <div id="animate" class="absolute z-[3] inset-0 w-full h-full">
+      
+            <div class="lottie-progress max-w-[50%] mx-auto">
+            </div>
+            <div class="container">
+              <div class="content">
+              </div>
+            </div>
 
           </div>
 
-          <p id="paragraph" class="absolute opacity-0 bottom-[-300px] left-[5%] w-[40%] h-[300px] z-[3] text-white font-semibold text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan condimentum augue, a tincidunt dui finibus vel.
-            Curabitur euismod ex convallis, rhoncus mi sed, bibendum metus. Cras sit amet eros dui. Proin consequat neque eget leo
-            porta, id rhoncus nibh sagittis. Sed imperdiet sed lorem quis tristique. Donec tristique vitae nunc in tristique.
-            Suspendisse aliquam, felis ut condimentum feugiat, augue augue efficitur augue, in commodo arcu erat vel tortor.
-            Suspendisse et sodales odio. Sed pulvinar a libero id sodales. Phasellus ac lacus convallis, eleifend arcu quis, blandit
-            turpis. Morbi ex justo, congue ut augue in, volutpat commodo sapien. Aenean consectetur aliquam semper. Curabitur at
-            dolor sapien. Donec et dignissim tellus. Praesent eu tincidunt lacus. Aenean luctus ultrices risus non vulputate.
-          </p>
-
-          <p id="paragraph2" class="absolute opacity-0 bottom-[-100%] right-[5%] w-[25%] z-[3] text-white font-semibold text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan condimentum augue, a tincidunt dui finibus vel.
-            Curabitur euismod ex convallis, rhoncus mi sed, bibendum metus. Cras sit amet eros dui. Proin consequat neque eget leo
-            porta, id rhoncus nibh sagittis. Sed imperdiet sed lorem quis tristique. Donec tristique vitae nunc in tristique.
-            Suspendisse aliquam, felis ut condimentum feugiat, augue augue efficitur augue, in commodo arcu erat vel tortor.
-          </p>
-
-          <div id="animate2" class="transform translate-y-[100%] h-full bg-[#00AE00] w-full" ></div>
+          <div id="animate2" class="transform translate-y-[100%] h-full bg-[black] w-full" ></div>
 
         </div>
       </div>      
 
     </div>
-
-    <script>
-
-      const controller = new ScrollMagic.Controller();
-      
-      // Cuando el objeto .trigger pasa por el trigger marcador se detona la animación tween
-      new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 0 })
-
-      .setTween("#animate", 1, { className: "+=extender" })
-      .addIndicators({ name: "marcador" })
-      .addTo(controller);
-
-      new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 1000 })
-
-      .setTween("#animate2", 1, { className: "+=up" })
-      .addIndicators({ name: "marcador2" })
-      .addTo(controller);
-
-      new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 2000 })
-
-      .setTween("#animate2", 1, { className: "+=upAll" })
-      .addIndicators({ name: "marcador3" })
-      .addTo(controller);
-
-      new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 2000 })
-
-      .setTween("#heading", 1, { className: "+=heading" })
-      .addIndicators({ name: "marcador heading" })
-      .addTo(controller);
-
-      new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: 3000 })
-
-      .setTween("#animate", 1, { className: "+=video" })
-      .addIndicators({ name: "marcador33" })
-      .addTo(controller);
-      
-      new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: 3000 })
-
-      .setTween("#animate0", 1, { className: "+=image" })
-      .addIndicators({ name: "marcador44" })
-      .addTo(controller);
-
-      new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 3000, offset: 3000 })
-
-      .setTween("#paragraph", 1, { className: "+=text" })
-      .addIndicators({ name: "marcador5" })
-      .addTo(controller);
-
-      new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 6000 })
-
-      .setTween("#paragraph", 1, { className: "+=text2" })
-      .addIndicators({ name: "marcador6" })
-      .addTo(controller);
-
-      new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1500, offset: 6500 })
-
-      .setTween("#paragraph", 1, { className: "+=text3" })
-      .addIndicators({ name: "marcador7" })
-      .addTo(controller);
-
-
-      //Text 2
-
-      new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 3000, offset: 3000 })
-
-      .setTween("#paragraph2", 1, { className: "+=text_2" })
-      .addIndicators({ name: "marcador5" })
-      .addTo(controller);
-
-      new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 6000 })
-
-      .setTween("#paragraph2", 1, { className: "+=text_2-2" })
-      .addIndicators({ name: "marcador6" })
-      .addTo(controller);
-
-      new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1500, offset: 6500 })
-
-      .setTween("#paragraph2", 1, { className: "+=text_2-3" })
-      .addIndicators({ name: "marcador7 6500" })
-      .addTo(controller);
-
-      new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 8000 })
-
-      .setTween("#paragraph2", 1, { className: "+=text_2-4" })
-      .addIndicators({ name: "marcador9" })
-      .addTo(controller);
-
-      new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 10000 })
-
-    .setTween("#paragraph2", 1, { className: "+=text_2-5" })
-    .addIndicators({ name: "marcador10" })
-    .addTo(controller);
-
-    </script>
-
-    <script>
-      let video = document.getElementsByTagName('video')[0],
-      videoDuration;
-
-      // Run program on video load
-      video.onloadeddata = function() {
-          
-          // Grab the target video duration
-          videoDuration = video.duration;
-          console.log(video.duration);
-
-          // Build ScrollMagic Scene
-          new ScrollMagic.Scene({triggerElement: ".trigger", duration: 300000, offset: 3000})
-          .setTween(video, 1, {
-                          currentTime: videoDuration,
-                          ease: Quad.easeOut,
-                          overwrite:true
-          }) // Add tween to the scene
-          .addIndicators({name: "video play"}) // Add indicators to the scrollbar							
-          .addTo(controller); // Add scene to the controller
-      };
-
-    </script>
 
     <script type="module" src="/main.js"></script>
     

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js" integrity="sha512-yAr4fN9WZH6hESbOwoFZGtSgOP+LSZbs/JeoDr02pOX4yUFfI++qC9YwIQXIGffhnzliykJtdWTV/v3PxSz8aw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.8.1/smooth-scrollbar.js" integrity="sha512-yn9N2uBs4OocMUaJ9wZK6ELv+qXIULoRa7IvOsGz2wqWQRt8mNqU1L2I9Fau24PPxEKlGxuEDkRKvsanwAWUYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  
+
+    <div class="lottie-progress">
+    </div>
+    <div class="container">
+      <div class="content">
+      </div>
+    </div>
+
+    
+<script>
+  /* 
+
+Lottie by: Jeffrey Christopher
+
+https://lottiefiles.com/zeffchris
+
+*/
+
+const scrollbar = Scrollbar.init(document.querySelector(".container"), {
+renderByPixels: false
+});
+
+let lottieProgress = lottie.loadAnimation({
+container: document.querySelector(".lottie-progress"),
+renderer: "svg",
+loop: false,
+autoplay: false,
+path: "Kuru_Shoe_v3.json"
+});
+
+scrollbar.addListener(() => {
+  
+  console.log(scrollbar.limit.y);
+  console.log(scrollbar.scrollTop);
+
+let totalHeight = scrollbar.limit.y;
+let scrollFromTop = scrollbar.scrollTop;
+let totalFrames = lottieProgress.totalFrames;
+let scrollPercentage = (scrollFromTop * 100) / totalHeight;
+let scrollPercentRounded = Math.round(scrollPercentage); // Just in case
+
+// Check if the current frame is the last frame. If it's the last frame, do nothing. This prevents showing the empty frame at the end. Thanks Pauline for pointing out.
+if ((scrollPercentage * totalFrames) / 100 < totalFrames) {
+  lottieProgress.goToAndStop((scrollPercentage * totalFrames) / 100, true);
+} else {
+  return;
+}
+});
+
+scrollbar.scrollTo(0, 700, 2000);
+
+</script>
+<style>
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(112, 112, 112);
+  color: white;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+}
+
+.content {
+  width: 100%;
+  height: 400vh;
+}
+
+.lottie-progress {
+  width: 400px;
+  height: auto;
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+
+
+}
+
+</style>
+</body>
+</html>
