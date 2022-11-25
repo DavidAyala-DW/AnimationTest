@@ -11,30 +11,30 @@ let lottieProgress = lottie.loadAnimation({
   
 const controller = new ScrollMagic.Controller();      
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 1000 })
+new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 500 })
 
 .setTween("#animate2", 1, { className: "+=up" })
 .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 2000 })
+new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 1000 })
 
 .setTween("#animate2", 1, { className: "+=upAll" })
 .addTo(controller);
 
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: 3000 })
+new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: 1500 })
 
 .setTween("#animate", 1, { className: "+=animateLotti" })
 .addTo(controller)
 .on("enter", () => {
 
   window.addEventListener("scroll", () => {
-    let totalHeight = 20000;
+    let totalHeight = 10000;
     let scrollFromTop = window.scrollY;
     let totalFrames = lottieProgress.totalFrames;
     let scrollPercentage;
     console.log(scrollFromTop);
-    if(scrollFromTop >= 20000){
+    if(scrollFromTop >= totalHeight){
       scrollPercentage = ( totalHeight - (scrollFromTop*(.7)) ) * 100 / totalHeight;
       console.log(scrollPercentage);
     }else{
@@ -55,113 +55,113 @@ new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: 3000 })
 
 });
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 4150 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 4150 })
 
-.setTween("#ultimate_insole", 1, { className: "+=opactity-active" })
-.addTo(controller);
+// .setTween("#ultimate_insole", 1, { className: "+=opactity-active" })
+// .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 4150 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 4150 })
 
-.setTween("#kuru_cloud", 1, { className: "+=opactity-active" })
-.addTo(controller);
+// .setTween("#kuru_cloud", 1, { className: "+=opactity-active" })
+// .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 4150 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 4150 })
 
-.setTween("#kuru_sole", 1, { className: "+=opactity-active" })
-.addTo(controller);
+// .setTween("#kuru_sole", 1, { className: "+=opactity-active" })
+// .addTo(controller);
 
-//Content
+// //Content
 
-//Ultimate Insole
+// //Ultimate Insole
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 3200, offset: 4800 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 3200, offset: 4800 })
 
-.setTween("#ultimate_insole", 1, { className: "+=active_card" })
-.addTo(controller);
+// .setTween("#ultimate_insole", 1, { className: "+=active_card" })
+// .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 4800 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 4800 })
 
-.setTween("#ultimate_insole_content", 1, { className: "+=opactity-active" })
-.addTo(controller);
+// .setTween("#ultimate_insole_content", 1, { className: "+=opactity-active" })
+// .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 9000 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 9000 })
 
-.setTween("#ultimate_insole", 1, { className: "-=active_card" })
-.addTo(controller);
+// .setTween("#ultimate_insole", 1, { className: "-=active_card" })
+// .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 9000 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 9000 })
 
-.setTween("#ultimate_insole_content", 1, { className: "-=opactity-active" })
-.addTo(controller);
+// .setTween("#ultimate_insole_content", 1, { className: "-=opactity-active" })
+// .addTo(controller);
 
-//kuru_cloud
+// //kuru_cloud
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 5500, offset: 9000 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 5500, offset: 9000 })
 
-.setTween("#kuru_cloud", 1, { className: "+=active_card" })
-.addTo(controller);
+// .setTween("#kuru_cloud", 1, { className: "+=active_card" })
+// .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 9000 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 9000 })
 
-.setTween("#kuru_cloud_content", 1, { className: "+=opactity-active"  })
-.addTo(controller);
+// .setTween("#kuru_cloud_content", 1, { className: "+=opactity-active"  })
+// .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 14300 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 14300 })
 
-.setTween("#kuru_cloud", 1, { className: "-=active_card" })
-.addTo(controller);
+// .setTween("#kuru_cloud", 1, { className: "-=active_card" })
+// .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 14300 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 14300 })
 
-.setTween("#kuru_cloud_content", 1, { className: "-=opactity-active"  })
-.addTo(controller);
+// .setTween("#kuru_cloud_content", 1, { className: "-=opactity-active"  })
+// .addTo(controller);
 
-//Sole
+// //Sole
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 5700, offset: 14300 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 5700, offset: 14300 })
 
-.setTween("#kuru_sole", 1, { className: "+=active_card" })
-.addTo(controller);
+// .setTween("#kuru_sole", 1, { className: "+=active_card" })
+// .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 14300 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 14300 })
 
-.setTween("#kuru_sole_content", 1, { className: "+=opactity-active"  })
-.addTo(controller);
+// .setTween("#kuru_sole_content", 1, { className: "+=opactity-active"  })
+// .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 19800 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 19800 })
 
-.setTween("#kuru_sole", 1, { className: "-=active_card" })
-.addTo(controller);
+// .setTween("#kuru_sole", 1, { className: "-=active_card" })
+// .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 19800 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 19800 })
 
-.setTween("#kuru_sole_content", 1, { className: "-=opactity-active"  })
-.addTo(controller);
+// .setTween("#kuru_sole_content", 1, { className: "-=opactity-active"  })
+// .addTo(controller);
 
 
-//Clear All
+// //Clear All
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 20000 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 20000 })
 
-.setTween("#ultimate_insole", 1, { className: "-=opactity-active" })
-.addTo(controller);
+// .setTween("#ultimate_insole", 1, { className: "-=opactity-active" })
+// .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 20000 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 20000 })
 
-.setTween("#kuru_cloud", 1, { className: "-=opactity-active" })
-.addTo(controller);
+// .setTween("#kuru_cloud", 1, { className: "-=opactity-active" })
+// .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 20000 })
+// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 20000 })
 
-.setTween("#kuru_sole", 1, { className: "-=opactity-active" })
-.addTo(controller);
+// .setTween("#kuru_sole", 1, { className: "-=opactity-active" })
+// .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 25000 })
+new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 11500 })
 
 .setTween("#animate", 1, { className: "+=opactity-disabled upAllAll" })
 .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1750, offset: 25000 })
+new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1750, offset: 11500 })
 
 .setTween("#last_section", 1, { className: "+=upAll opactity-active" })
 .addTo(controller);
