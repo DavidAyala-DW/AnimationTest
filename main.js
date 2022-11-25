@@ -14,19 +14,17 @@ const controller = new ScrollMagic.Controller();
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 1000 })
 
 .setTween("#animate2", 1, { className: "+=up" })
-.addIndicators({ name: "marcador2" })
 .addTo(controller);
 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 2000 })
 
 .setTween("#animate2", 1, { className: "+=upAll" })
-.addIndicators({ name: "marcador3" })
 .addTo(controller);
+
 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: 3000 })
 
 .setTween("#animate", 1, { className: "+=animateLotti" })
-.addIndicators({ name: "marcador3" })
 .addTo(controller)
 .on("enter", () => {
 
@@ -34,9 +32,19 @@ new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: 3000 })
     let totalHeight = 20000;
     let scrollFromTop = window.scrollY;
     let totalFrames = lottieProgress.totalFrames;
-    let scrollPercentage = (scrollFromTop * 100) / totalHeight;
+    let scrollPercentage;
+    console.log(scrollFromTop);
+    if(scrollFromTop >= 20000){
+      scrollPercentage = ( totalHeight - (scrollFromTop*(.7)) ) * 100 / totalHeight;
+      console.log(scrollPercentage);
+    }else{
+      scrollPercentage = (scrollFromTop * 100) / totalHeight;
+      console.log(scrollPercentage);
+    }
+    
   
     // Check if the current frame is the last frame. If it's the last frame, do nothing. This prevents showing the empty frame at the end. Thanks Pauline for pointing out.
+    console.log((scrollPercentage * totalFrames) / 100 < totalFrames);
     if ((scrollPercentage * totalFrames) / 100 < totalFrames) {
       lottieProgress.goToAndStop((scrollPercentage * totalFrames) / 100, true);
     } else {
@@ -50,19 +58,16 @@ new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: 3000 })
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 4150 })
 
 .setTween("#ultimate_insole", 1, { className: "+=opactity-active" })
-.addIndicators({ name: "marcador3" })
 .addTo(controller);
 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 4150 })
 
 .setTween("#kuru_cloud", 1, { className: "+=opactity-active" })
-.addIndicators({ name: "marcador3" })
 .addTo(controller);
 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 4150 })
 
 .setTween("#kuru_sole", 1, { className: "+=opactity-active" })
-.addIndicators({ name: "marcador3" })
 .addTo(controller);
 
 //Content
@@ -72,25 +77,21 @@ new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 4150
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 3200, offset: 4800 })
 
 .setTween("#ultimate_insole", 1, { className: "+=active_card" })
-.addIndicators({ name: "ultimate_insole" })
 .addTo(controller);
 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 4800 })
 
 .setTween("#ultimate_insole_content", 1, { className: "+=opactity-active" })
-.addIndicators({ name: "ultimate_insole_content" })
 .addTo(controller);
 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 9000 })
 
 .setTween("#ultimate_insole", 1, { className: "-=active_card" })
-.addIndicators({ name: "ultimate_insole" })
 .addTo(controller);
 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 9000 })
 
 .setTween("#ultimate_insole_content", 1, { className: "-=opactity-active" })
-.addIndicators({ name: "ultimate_insole_content" })
 .addTo(controller);
 
 //kuru_cloud
@@ -98,25 +99,21 @@ new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 9000 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 5500, offset: 9000 })
 
 .setTween("#kuru_cloud", 1, { className: "+=active_card" })
-.addIndicators({ name: "ultimate_insole" })
 .addTo(controller);
 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 9000 })
 
 .setTween("#kuru_cloud_content", 1, { className: "+=opactity-active"  })
-.addIndicators({ name: "ultimate_insole_content" })
 .addTo(controller);
 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 14300 })
 
 .setTween("#kuru_cloud", 1, { className: "-=active_card" })
-.addIndicators({ name: "ultimate_insole" })
 .addTo(controller);
 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 14300 })
 
 .setTween("#kuru_cloud_content", 1, { className: "-=opactity-active"  })
-.addIndicators({ name: "ultimate_insole_content" })
 .addTo(controller);
 
 //Sole
@@ -124,25 +121,21 @@ new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 14300
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 5700, offset: 14300 })
 
 .setTween("#kuru_sole", 1, { className: "+=active_card" })
-.addIndicators({ name: "ultimate_insole" })
 .addTo(controller);
 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 14300 })
 
 .setTween("#kuru_sole_content", 1, { className: "+=opactity-active"  })
-.addIndicators({ name: "ultimate_insole" })
 .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: 20000 })
+new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 19800 })
 
 .setTween("#kuru_sole", 1, { className: "-=active_card" })
-.addIndicators({ name: "ultimate_insole" })
 .addTo(controller);
 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 19800 })
 
 .setTween("#kuru_sole_content", 1, { className: "-=opactity-active"  })
-.addIndicators({ name: "ultimate_insole" })
 .addTo(controller);
 
 
@@ -151,23 +144,24 @@ new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 19800
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 20000 })
 
 .setTween("#ultimate_insole", 1, { className: "-=opactity-active" })
-.addIndicators({ name: "marcador3" })
 .addTo(controller);
 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 20000 })
 
 .setTween("#kuru_cloud", 1, { className: "-=opactity-active" })
-.addIndicators({ name: "marcador3" })
 .addTo(controller);
 
 new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 20000 })
 
 .setTween("#kuru_sole", 1, { className: "-=opactity-active" })
-.addIndicators({ name: "marcador3" })
 .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 20000 })
+new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 25000 })
 
-.setTween("#animate", 1, { className: "+=opactity-disabled" })
-.addIndicators({ name: "marcador3" })
+.setTween("#animate", 1, { className: "+=opactity-disabled upAllAll" })
+.addTo(controller);
+
+new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1750, offset: 25000 })
+
+.setTween("#last_section", 1, { className: "+=upAll opactity-active" })
 .addTo(controller);

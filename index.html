@@ -20,6 +20,11 @@
       .upAll{
         transform: translateY(0);
       }
+
+      .upAllAll{
+        transform: translateY(-100%);
+      }
+
       .active_card{
         background-color: white;
       }
@@ -49,33 +54,33 @@
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <div class="min-h-[200px]"></div>
 
-    <div id="set-height" class="block h-[23000px] relative trigger">
+    <div id="set-height" class="block h-[27000px] relative trigger">
 
-      <div class="sticky top-0 w-full h-screen bg-white">
-        <div class="relative w-full h-full flex flex-col justify-center items-center">
+      <div id="wrapper" class="sticky top-0 w-full h-screen bg-white">
+        <div class="relative wrapper-child w-full h-full flex flex-col justify-center items-center max-w-full overflow-hidden translate-y-0 md:!translate-y-0">
 
-          <div class="absolute top-[14.8%]">
-            <div class="flex flex-col max-w-[30.41vw] w-full mx-auto">
-
-              <h1 class="text-center font-semibold tracking-[-1.5px] capitalize text-[2.777vw] leading-[1.2] mb-[.7vw]">
-                Smartest Shoes That Hug Your Heels
-              </h1>
-
-              <p class="leading-[1.3] tracking-[0.5px] font-normal text-center text-[1.111vw]">
-                And the science of unparalleled pain relief
-              </p>
-
+          <div id="animate" class="absolute opacity-100 z-[3] inset-0 w-full h-full flex flex-col justify-center md:justify-center lg:justify-end">
+            <div class="lottie-progress pb-[50px] md:pb-0 relative md:max-w-full transform scale-[1.0666] min-w-[375px] max-w-[375px] md:scale-1 md:w-[483px] lg:w-[678px] mx-auto">
+              <div class="absolute top-[-20px] max-w-[93.333vw] md:max-w-[100vw] md:top-[20px] lg:top-[50px] w-[99vw] left-[calc((400px-100vw)/2)] md:left-[calc((438px-100vw)/2)] lg:left-[calc((678px-100vw)/2)]">
+                <div class="flex flex-col md:max-w-[560px] lg:max-w-[438px] w-full mx-auto">
+    
+                  <h1 class="text-center font-semibold tracking-[-1.5px] capitalize text-[24px] mx-auto max-w-[243px] md:max-w-full md:text-[30px] lg:text-[40px] md:leading-[1] lg:leading-[1.2] md:mb-2.5 lg:mb-[11x]">
+                    Smartest Shoes That Hug Your Heels
+                  </h1>
+    
+                  <p class="leading-[1.3] tracking-[0.5px] max-w-[344px] mx-auto md:max-w-full font-normal text-center text-base">
+                    And the science of unparalleled pain relief
+                  </p>
+    
+                </div>
+              </div>
             </div>
           </div>
-
-          <div id="animate" class="absolute opacity-100 z-[3] inset-0 w-full h-full flex flex-col justify-end">
-            <div class="lottie-progress max-w-full md:w-[678px] mx-auto"></div>
-          </div>
       
-          <div id="ultimate_insole" class="absolute opacity-0 top-[66.5%] left-[calc(_(100%_-_678px)_/_2__+_(678px_*_0.7)__)] transform-[matrix(-1,_0,_0,_1,_0,_0)] shadow-[0px_4px_24px] shadow-white border-[1.5px] border-solid border-white h-10 w-10 bg-black rounded-full flex flex-col justify-center items-center z-[4]">
+          <div id="ultimate_insole" class="absolute opacity-0 top-[52%] md:top-[58%] lg:top-[66.5%] left-[calc(_(100%_-_400px)_/_2__+_(400px_*_0.65+5px)__)] md:left-[calc(_(100%_-_483px)_/_2__+_(483px_*_0.65)__)] lg:left-[calc(_(100%_-_678px)_/_2__+_(678px_*_0.7)__)] transform-[matrix(-1,_0,_0,_1,_0,_0)] shadow-[0px_4px_24px] shadow-white border-[1.5px] border-solid border-white w-5 md:w-6 lg:h-10 h-5 md:h-6 lg:w-10 bg-black rounded-full flex flex-col justify-center items-center z-[4]">
 
-            <div class="h-[36px] subCircle w-[36px] rounded-full flex flex-col justify-center items-center bg-black">
-              <svg class="filter invert" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <div class="h-4 md:h-5 lg:h-[36px] subCircle w-4 md:w-5 lg:w-[36px] rounded-full flex flex-col justify-center items-center bg-black">
+              <svg class="filter invert h-2 md:h-2.5 w-2 md:w-2.5 lg:w-[15px] lg:h-[15px]" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
                 <path d="M0.0468751 8.66667L0.046875 6L14.7135 6V8.66667L0.0468751 8.66667Z" fill="black"/>
                 <path d="M0.0468751 8.66667L0.046875 6L14.7135 6V8.66667L0.0468751 8.66667Z" fill="black"/>
                 <path d="M0.0468751 8.66667L0.046875 6L14.7135 6V8.66667L0.0468751 8.66667Z" fill="black"/>
@@ -87,12 +92,12 @@
             
           </div>
 
-          <div id="ultimate_insole_content" class="flex opacity-0 items-stretch absolute top-[66.5%] left-[calc(_(100%_-_678px)_/_2__+_(678px_*_0.7)__+_40px)] z-[4] max-w-[35.486vw]">
-            <div class="w-[5vw] xl:w-[10vw] max-w-[140px] mt-5 h-px bg-white"></div>
-            <div class="flex items-start flex-col mt-[5px]">
-              <div class="flex items-center space-x-2.5 mb-1 xl:mb-5">
+          <div id="ultimate_insole_content" class="flex flex-col md:!flex-row opacity-0 items-stretch absolute top-[calc(52%+20px)] md:top-[58%] lg:top-[66.5%] left-[calc(_(100%_-_400px)_/_2__+_(400px_*_0.65_-_110px)_)] md:left-[calc(_(100%_-_483px)_/_2__+_(483px_*_0.65_+_24px)__)] lg:left-[calc(_(100%_-_678px)_/_2__+_(678px_*_0.7)__+_40px)] z-[4] lg:max-w-[35.486vw]">
+            <div class="w-[1px] h-[102px] ml-[calc(100%-15px)] md:ml-0 md:w-[13.4vw] lg:w-[5vw] xl:w-[10vw] md:max-w-[112px] lg:max-w-[140px] md:mt-[11px] lg:mt-5 md:h-px bg-white"></div>
+            <div class="flex items-start flex-col md:mt-[-6px] lg:mt-[5px]">
+              <div class="flex items-center gap-[10px] md:gap-0 md:space-x-2.5 mb-1 xl:mb-5">
 
-                <svg width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="order-2 md:order-1 " width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="14.8789" cy="14.5" r="14" stroke="white"/>
                   <path d="M7.0222 15.3206C5.72988 16.1474 6.67954 16.5263 7.3159 16.6124C7.72771 16.7158 8.1728 16.6555 8.34388 16.6124C11.5747 15.4498 14.3649 15.3206 16.4208 15.8373C18.4768 16.3541 19.2111 17 21.8544 17H21.8544C24.4978 17 25.3789 17 25.3789 16.2249C25.3789 15.6048 23.4209 15.4498 22.4418 15.4498C21.4628 15.5359 18.9173 15.4756 16.5677 14.5455C13.6306 13.3828 8.63759 14.2871 7.0222 15.3206Z" stroke="white"/>
                   <path d="M19.3789 17C17.6888 17 11.3084 17 7.37891 17" stroke="white"/>
@@ -106,13 +111,13 @@
                   <path d="M24.6678 13.6328L26.5671 11.7335" stroke="#93D500"/>
                 </svg>
 
-                <p class="text-base font-semibold text-black bg-white py-2 min-w-[158px] text-center leading-[25px] rounded-[50px]">
-                  ULTIMATE INSOLE
+                <p class="text-xs md:capitalize md:text-sm order-1 md:order-2 lg:text-base font-semibold text-black bg-white lg:py-2 min-w-[100px] md:min-w-[140px] lg:min-w-[158px] text-center leading-[25px] rounded-[50px]">
+                  Ultimate Insole
                 </p>
                   
               </div>
 
-              <div class="font-normal text-base text-white leading-[1.5] tracking-[.5px] w-full max-w-[25.763vw]">
+              <div class="font-normal fixed md:w-[99vw] max-w-[80%] left-4 top-[calc(52%+102px+80px)] md:top-[unset] md:left-[25px] md:bottom-[25px] lg:static text-xs md:text-base text-white leading-[1.5] tracking-[0.065px] md:tracking-[.5px] lg:w-full md:max-w-[620px] lg:max-w-[25.763vw]">
                 Conquer your day with custom comfort from heel to toe. Our ULTIMATE INSOLES use a space-age foam that harnesses your
                 body heat to custom mold to your heels, arches and forefoot for full-length support and ultra-comfort in all the right
                 places.
@@ -121,10 +126,10 @@
             </div>
           </div>
 
-          <div id="kuru_cloud" class="absolute opacity-0 top-[64.5%] left-[calc(_(100%_-_678px)_/_2__+_(678px_*_0.2)__)]  transform-[matrix(-1,_0,_0,_1,_0,_0)] shadow-[0px_4px_24px] shadow-white border-[1.5px] border-solid border-white h-10 w-10 bg-black rounded-full flex flex-col justify-center items-center z-[4]">
+          <div id="kuru_cloud" class="absolute opacity-0 top-[51%] left-[calc(_(100%_-_400px)_/_2__+_(400px_*_0.2)__)] md:top-[56.5%] lg:top-[64.5%] md:left-[calc(_(100%_-_483px)_/_2__+_(483px_*_0.2)__)] lg:left-[calc(_(100%_-_678px)_/_2__+_(678px_*_0.2)__)]  transform-[matrix(-1,_0,_0,_1,_0,_0)] shadow-[0px_4px_24px] shadow-white border-[1.5px] border-solid border-white w-5 md:w-6 lg:h-10 h-5 md:h-6 lg:w-10 bg-black rounded-full flex flex-col justify-center items-center z-[4]">
 
-            <div class="h-[36px] subCircle w-[36px] rounded-full flex flex-col justify-center items-center bg-black">
-              <svg class="filter invert" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <div class="h-4 md:h-5 lg:h-[36px] subCircle w-4 md:w-5 lg:w-[36px] rounded-full flex flex-col justify-center items-center bg-black">
+              <svg class="filter invert h-2 md:h-2.5 w-2 md:w-2.5 lg:w-[15px] lg:h-[15px]" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
                 <path d="M0.0468751 8.66667L0.046875 6L14.7135 6V8.66667L0.0468751 8.66667Z" fill="black"/>
                 <path d="M0.0468751 8.66667L0.046875 6L14.7135 6V8.66667L0.0468751 8.66667Z" fill="black"/>
                 <path d="M0.0468751 8.66667L0.046875 6L14.7135 6V8.66667L0.0468751 8.66667Z" fill="black"/>
@@ -136,15 +141,16 @@
             
           </div>
 
-          <div id="kuru_cloud_content" class="flex opacity-0 items-stretch absolute top-[64.5%] left-[calc(_(100%_-_678px)_/_2__+_(678px_*_0.2)__-_26vw)] z-[4] w-full max-w-[26vw]">            
-            <div class="flex items-start flex-col mt-[5px] relative">
-              <div class="flex items-center space-x-2.5 mb-1 xl:mb-5 max-w-max bg-black z-[1]">
+          <div id="kuru_cloud_content" class="flex flex-col md:!flex-row opacity-0 items-stretch absolute top-[calc(51%+20px)] md:top-[56.5%] lg:top-[64.5%] left-[calc(_(100%_-_400px)_/_2__+_(400px_*_0.2)_-_5px)] md:left-[calc(_(100%_-_483px)_/_2__+_(483px_*_0.2)__-_26.5vw)] lg:left-[calc(_(100%_-_678px)_/_2__+_(678px_*_0.2)__-_26vw)] z-[4] w-full md:max-w-[26.5vw] lg:max-w-[26vw]">            
 
-                <p class="text-base font-semibold text-black bg-white py-2 min-w-[158px] text-center leading-[25px] rounded-[50px]">
-                  <strong>KURU</strong>CLOUD                   
+            <div class="flex order-2 md:order-1 items-start flex-col md:mt-[-6px] lg:mt-[5px] relative">
+              <div class="flex items-center gap-2.5 md:gap-0 md:space-x-2.5 md:mb-1 xl:mb-5 max-w-max md:bg-black z-[1]">
+
+                <p class="text-xs md:text-base md:capitalize order-2 md:order-1 lg:text-base font-semibold text-black bg-white md:py-2 min-w-[100px] md:min-w-[116px] lg:min-w-[158px] text-center leading-[25px] rounded-[50px]">
+                  <strong>KURU</strong>CLOUD                  
                 </p>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="29" viewBox="0 0 30 29" fill="none">
+                <svg classs="order-1 md:order-2" xmlns="http://www.w3.org/2000/svg" width="30" height="29" viewBox="0 0 30 29" fill="none">
                   <path d="M9.7383 18.3133C8.71135 18.3133 7.84068 17.9533 7.12628 17.2334C6.41189 16.5135 6.05469 15.6414 6.05469 14.6172C6.05469 13.6375 6.41189 12.7729 7.12628 12.0233C7.84068 11.2736 8.70391 10.9063 9.71597 10.9211C9.83504 9.62969 10.3746 8.54981 11.3345 7.68145C12.2945 6.81309 13.4293 6.37891 14.7391 6.37891C16.1232 6.37891 17.299 6.87246 18.2664 7.85957C19.2338 8.84668 19.7175 10.0379 19.7175 11.4332V12.7692H20.4319C21.2505 12.7246 21.9463 12.9695 22.5193 13.5039C23.0923 14.0383 23.3788 14.7137 23.3788 15.5301C23.3788 16.302 23.1072 16.9588 22.564 17.5006C22.0207 18.0424 21.3621 18.3133 20.5882 18.3133H9.7383ZM9.7383 17.8235H20.5882C21.2282 17.8235 21.7714 17.6008 22.2179 17.1555C22.6644 16.7102 22.8877 16.1684 22.8877 15.5301C22.8877 14.9067 22.6644 14.3723 22.2179 13.927C21.7714 13.4817 21.2282 13.259 20.5882 13.259H19.2264V11.4332C19.2264 10.1715 18.7873 9.09532 17.9092 8.20469C17.0311 7.31406 15.9595 6.86875 14.6944 6.86875C13.4442 6.86875 12.3764 7.31406 11.4908 8.20469C10.6052 9.09532 10.1625 10.1715 10.1625 11.4332H9.71597C8.83786 11.4332 8.08998 11.7449 7.47232 12.3684C6.85466 12.9918 6.54584 13.7488 6.54584 14.6395C6.54584 15.5153 6.85838 16.2649 7.48348 16.8883C8.10858 17.5117 8.86018 17.8235 9.7383 17.8235Z" fill="white" stroke="white" stroke-width="0.384981"/>
                   <circle cx="9.90602" cy="17.5427" r="3.07985" fill="black" stroke="#93D500" stroke-width="0.939353"/>
                   <rect x="9.39062" y="16.002" width="1.02662" height="3.07985" fill="#93D500"/>
@@ -154,7 +160,7 @@
                   
               </div>
 
-              <div class="font-normal text-base text-white leading-[1.5] tracking-[.5px] w-[124%] xl:w-full xl:max-w-[25.069vw]">
+              <div class="font-normal fixed left-4 md:left-[25px] top-[calc(51%+102px+80px)] md:top-[unset] md:bottom-[25px] lg:static text-xs md:text-base text-white leading-[1.5] tracking-[.5px] md:max-w-[620px] lg:w-[124%] xl:w-full xl:max-w-[25.069vw] max-w-[80%]">
                 Footwear is your foundation, and every shoe begins with the midsole as the first point of contact with the ground.
                 Inspired by performance running shoes, our KURUCLOUD midsole blends lightweight foams to give you extra bounce per
                 ounce. Enjoy enhanced cushion and Earth’s smoothest stride with every step.
@@ -162,14 +168,14 @@
 
             </div>
 
-            <div class="absolute right-0 w-full mt-5 h-px bg-white"></div>
+            <div class="w-px h-[102px] md:absolute ml-[15px] order-1 md:order-2 md:right-0 md:w-full md:mt-[11px] lg:mt-5 md:h-px bg-white"></div>
 
           </div>
 
-          <div id="kuru_sole" class="absolute opacity-0  top-[57%] left-[calc(_(100%_-_678px)_/_2__+_(678px_*_0.32)__)] transform-[matrix(-1,_0,_0,_1,_0,_0)] shadow-[0px_4px_24px] shadow-white border-[1.5px] border-solid border-white h-10 w-10 bg-black rounded-full flex flex-col justify-center items-center z-[4]">
+          <div id="kuru_sole" class="absolute opacity-0 top-[47%] md:top-[51.5%] lg:top-[57%] left-[calc(_(100%_-_400px)_/_2__+_(400px_*_0.34)_)] md:left-[calc(_(100%_-_483px)_/_2__+_(483px_*_0.34)__)] lg:left-[calc(_(100%_-_678px)_/_2__+_(678px_*_0.32)__)] transform-[matrix(-1,_0,_0,_1,_0,_0)] shadow-[0px_4px_24px] shadow-white border-[1.5px] border-solid border-white h-5 md:h-6 lg:h-10 w-5 md:w-6 lg:w-10 bg-black rounded-full flex flex-col justify-center items-center z-[4]">
 
-            <div class="h-[36px] subCircle w-[36px] rounded-full flex flex-col justify-center items-center bg-black">
-              <svg class="filter invert" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <div class="h-4 md:h-5 lg:h-[36px] subCircle w-4 md:w-5 lg:w-[36px] rounded-full flex flex-col justify-center items-center bg-black">
+              <svg class="filter invert h-2 md:h-2.5 w-2 md:w-2.5 lg:w-[15px] lg:h-[15px]" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
                 <path d="M0.0468751 8.66667L0.046875 6L14.7135 6V8.66667L0.0468751 8.66667Z" fill="black"/>
                 <path d="M0.0468751 8.66667L0.046875 6L14.7135 6V8.66667L0.0468751 8.66667Z" fill="black"/>
                 <path d="M0.0468751 8.66667L0.046875 6L14.7135 6V8.66667L0.0468751 8.66667Z" fill="black"/>
@@ -181,15 +187,15 @@
             
           </div>
 
-          <div id="kuru_sole_content" class="flex opacity-0  items-stretch absolute top-[57%] left-[4.86vw] z-[4] w-full max-w-[38vw]">            
-            <div class="flex items-start flex-col mt-[5px] relative">
-              <div class="flex items-center space-x-2.5 mb-1 xl:mb-5 max-w-max bg-black z-[1]">
+          <div id="kuru_sole_content" class="flex flex-col md:!flex-row opacity-0 items-stretch absolute top-[calc(47%+20px)] md:top-[51.5%] lg:top-[57%] left-[calc(_(100%_-_400px)_/_2__+_(400px_*_0.34)_-_5px)] md:left-[3.357vw] lg:left-[4.86vw] z-[4] w-full max-w-[38vw]">            
+            <div class="flex order-2 md:order-1 items-start flex-col md:mt-[-6px] lg:mt-[5px] relative">
+              <div class="flex gap-2.5 md:gap-0 items-center md:space-x-2.5 md:mb-1 xl:mb-5 max-w-max md:bg-black z-[1]">
 
-                <p class="text-base font-semibold text-black bg-white py-2 min-w-[158px] text-center leading-[25px] rounded-[50px]">
+                <p class="text-xs md:text-base order-2 md:order-1 lg:text-base font-semibold text-black bg-white md:py-2 min-w-[100px] md:min-w-[116px] lg:min-w-[158px] text-center leading-[25px] rounded-[50px]">
                   KURUSOLE
                 </p>
 
-                <svg width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="order-1 md:order-2" width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="14.8789" cy="14.5" r="14" stroke="white"/>
                   <path d="M14.643 6L14.8457 6.08688M14.8457 6.08688L20.9062 8.68421C21.7924 12.3767 21.8008 20.3411 14.8457 22.9269M14.8457 6.08688L15.0484 6M14.8457 6.08688L8.78528 8.68421C7.89907 12.3767 7.89063 20.3411 14.8457 22.9269M14.8457 22.9269C14.7788 22.9517 14.7112 22.9761 14.643 23M14.8457 22.9269C14.9126 22.9517 14.9802 22.9761 15.0484 23" stroke="white" stroke-width="0.961234"/>
                   <line x1="15.1212" y1="10.9533" x2="15.1212" y2="18.0447" stroke="#93D500" stroke-width="0.961234" stroke-linecap="round"/>
@@ -199,7 +205,7 @@
                   
               </div>
 
-              <div class="font-normal text-base text-white leading-[1.5] tracking-[.5px] w-full max-w-[25.069vw]">
+              <div class="text-xs max-w-[80%] fixed left-4 top-[calc(47%+102px+80px)] md:top-[unset] font-normal md:bottom-[25px] md:left-[25px] md:fixed lg:static md:text-base text-white leading-[1.5] tracking-[.5px] w-full md:max-w-[620px] lg:max-w-[25.069vw]">
                 Love is found in the heart. Which is why our breakthrough KURUSOLE is the heartbeat of every shoe we sell. Flexing with
                 every step, KURUSOLE is the perfect blend of heel, ankle and arch support. Reflecting our obsession to keeping your body
                 younger, stronger and healthier letting you pursue what matters most.
@@ -207,8 +213,35 @@
 
             </div>
 
-            <div class="absolute right-0 w-full mt-5 h-px bg-white"></div>
+            <div class="order-1 md:order-2 w-px h-[102px] ml-[15px] md:absolute md:right-0 md:w-full md:mt-3 lg:mt-5 md:h-px bg-white"></div>
 
+          </div>
+
+          <div id="last_section" class="absolute z-[4] opacity-0 flex flex-col inset-0 w-full h-full justify-center items-center transform translate-y-[100%] px-4 md:px-5 lg:px-[72px]">
+
+            <div class="w-full items-center flex-col gap-[78px] md:gap-0 md:space-y-[54px] lg:space-y-0 lg:flex-row flex lg:space-x-[109px]" >
+
+              <div class="font-normal order-2 lg:order-1 lg:w-[50%] text-base leading-[20px] tracking-[0.5px] lg:max-w-[38.54vw] text-white flex flex-col space-y-5">
+
+                <p>
+                  Every KURU shoe is made with purpose to help you live out yours. 
+
+                </p>
+
+                <p>
+                  We studied the foot’s natural biomechanics and designed footwear to match. No flat insoles. No flimsy inserts. Just the most comfortable shoes with perfect cushion and support in all the right places. 
+                </p>                
+
+                <p>
+                  The secret sauce? <strong>KURU</strong>SOLE – our patented solution to heel pain. Unlike anything else, <strong>KURUS</strong>OLE’s heel-cupping design and responsive technology dynamically flexes with each step to hug and protect your heels. So your feet stay happy and healthy for all of life’s moments.   
+                </p>                
+                
+              </div>
+
+              <img class="block lg:w-[50%] order-1 lg:order-2" src="/iamge.png" alt="">
+
+            </div>
+          
           </div>
 
           <div id="animate2" class="transform translate-y-[100%] h-full bg-[black] w-full" ></div>
