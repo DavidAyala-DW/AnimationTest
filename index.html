@@ -46,6 +46,24 @@
       .opactity-disabled{
         opacity: 0;
       }
+
+      input[type="color"] {
+        -webkit-appearance: none;
+        border: none;
+        width: 16px;
+        height: 16px;
+        display: block;
+        border-radius: 50%;
+      }
+      input[type="color"]::-webkit-color-swatch-wrapper {
+        padding: 0;
+        border-radius: 50%;
+      }
+      input[type="color"]::-webkit-color-swatch {
+        border: none;
+        border-radius: 50%;
+      }
+
     </style>
 
     <script src="/ScrollMagic.min.js"></script>
@@ -66,11 +84,20 @@
 
       <div class="flex items-center space-x-5">
         <p class="text-sm font-semibold capitalize">Faster</p>
-        <input id="velocity_value" class="accent-white w-[80%]" value="20" type="range" name="velocity" min="0" max="20" step="1" id="">        
+        <input id="velocity_value" class="accent-white w-[80%] block" value="20" type="range" name="velocity" min="0" max="20" step="1">                
         <p class="text-sm font-semibold capitalize">Lower</p>
       </div>
 
+      <div class="flex items-center space-x-5">
+        <p class="text-sm font-semibold capitalize">Choose a color: </p>
+        <div class="w-5 border-white border-solid border-2 cursor-pointer block h-5 rounded-full flex flex-col justify-center">
+          <input id="color_value" class="accent-white w-5 h-5" value="#262626" type="color" name="color" id="color">        
+        </div>        
+      </div>
+      
+
       <p>value: <span id="read_value"> 20 </span> </p>
+      <p>Color: <span id="read_color_value"> #262626 </span> </p>
 
       <button id="save_value" class="bg-white rounded-[5px] max-w-max mx-auto block px-4 py-2 text-black font-semibold cursor-pointer">
         Save

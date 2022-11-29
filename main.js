@@ -1,11 +1,19 @@
 import './style.css'
 
-window.minHeight = 6625;
-window.totalHeight = 6625;
+window.minHeight = 3312.5;
+window.totalHeight = 3312.5;
+window.bg_color = "#262626";
 
 const velocity_value = document.querySelector("#velocity_value");
 velocity_value.onchange = e => {
   const read_value = document.querySelector("#read_value");
+  read_value.textContent = e.target.value;
+}
+
+const color_value = document.querySelector("#color_value");
+color_value.onchange = e => {
+  const read_value = document.querySelector("#read_color_value");
+  window.bg_color = e.target.value;
   read_value.textContent = e.target.value;
 }
 
@@ -16,6 +24,7 @@ save_value_button.onclick = e => {
   const velocity = document.querySelector("#velocity_value").value;
   window.totalHeight = window.minHeight + window.minHeight*(velocity/10);
   setHeight(window.totalHeight);
+  setColor(window.bg_color);
   makeScrollMagic();
 }
 
@@ -24,7 +33,13 @@ function setHeight(height) {
   set_height_el.style.height = `${height}px`;
 }
 
+function setColor(color) {
+  const set_height_el = document.querySelector("#animate2");
+  set_height_el.style.backgroundColor = color ;
+}
+
 setHeight(window.totalHeight);
+setColor(window.bg_color);
 
 let lottieProgress = lottie.loadAnimation({
   container: document.querySelector(".lottie-progress"),
