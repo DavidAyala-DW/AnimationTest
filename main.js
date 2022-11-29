@@ -46,7 +46,7 @@ let lottieProgress = lottie.loadAnimation({
   renderer: "svg",
   loop: false,
   autoplay: false,
-  path: "Kuru_Shoe_v3.json"
+  path: "Kuru_Shoe_v4.json"
   });
 
 function handleScroll(h){
