@@ -1,5 +1,24 @@
 import './style.css'
-import animationData from "./public/Kuru_Shoe_v3.json";
+
+window.minHeight = 6625;
+window.totalHeight = 6625;
+
+const save_value_button = document.querySelector("#save_value");
+save_value_button.onclick = e => {
+  e.preventDefault();
+  resetAll();
+  const velocity = document.querySelector("#velocity_value").value;
+  window.totalHeight = window.minHeight + window.minHeight*(velocity/10);
+  setHeight(window.totalHeight);
+  makeScrollMagic();
+}
+
+function setHeight(height) {
+  const set_height_el = document.querySelector("#set-height");
+  set_height_el.style.height = `${height}px`;
+}
+
+setHeight(window.totalHeight);
 
 let lottieProgress = lottie.loadAnimation({
   container: document.querySelector(".lottie-progress"),
@@ -8,52 +27,73 @@ let lottieProgress = lottie.loadAnimation({
   autoplay: false,
   path: "Kuru_Shoe_v3.json"
   });
+
+function handleScroll(h){
+
+  let totalHeight = window.totalHeight*.6; // replace to window variable
+  let scrollFromTop = window.scrollY;
+  let totalFrames = lottieProgress.totalFrames;
+  let scrollPercentage;
+  if(scrollFromTop >= totalHeight){
+    lottieProgress.setDirection(-1);
+    const difference = scrollFromTop - totalHeight;
+    console.log(totalHeight - difference);
+    scrollPercentage = ( (totalHeight - difference)/4 * 100) / totalHeight;
+    console.log(scrollPercentage,"reverse");
+  }else{
+    scrollPercentage = (scrollFromTop * 100) / totalHeight;
+    console.log(scrollPercentage);
+  }
   
-const controller = new ScrollMagic.Controller();      
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 500 })
+  // Check if the current frame is the last frame. If it's the last frame, do nothing. This prevents showing the empty frame at the end. Thanks Pauline for pointing out.
+  // console.log((scrollPercentage * totalFrames) / 100 < totalFrames);
+  if ((scrollPercentage * totalFrames) / 100 < totalFrames) {
+    lottieProgress.goToAndStop((scrollPercentage * totalFrames) / 100, true);
+  } else {
+    return;
+  }
+}
 
-.setTween("#animate2", 1, { className: "+=up" })
-.addTo(controller);
+function makeScrollMagic(){
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 1000 })
-
-.setTween("#animate2", 1, { className: "+=upAll" })
-.addTo(controller);
-
-
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: 1500 })
-
-.setTween("#animate", 1, { className: "+=animateLotti" })
-.addTo(controller)
-.on("enter", () => {
-
-  window.addEventListener("scroll", () => {
-    let totalHeight = 10000;
-    let scrollFromTop = window.scrollY;
-    let totalFrames = lottieProgress.totalFrames;
-    let scrollPercentage;
-    console.log(scrollFromTop);
-    if(scrollFromTop >= totalHeight){
-      scrollPercentage = ( totalHeight - (scrollFromTop*(.7)) ) * 100 / totalHeight;
-      console.log(scrollPercentage);
-    }else{
-      scrollPercentage = (scrollFromTop * 100) / totalHeight;
-      console.log(scrollPercentage);
-    }
-    
+  window.controller = new ScrollMagic.Controller();      
+   
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: totalHeight*0.07547169811, offset: totalHeight*0.03773584905 })
   
-    // Check if the current frame is the last frame. If it's the last frame, do nothing. This prevents showing the empty frame at the end. Thanks Pauline for pointing out.
-    console.log((scrollPercentage * totalFrames) / 100 < totalFrames);
-    if ((scrollPercentage * totalFrames) / 100 < totalFrames) {
-      lottieProgress.goToAndStop((scrollPercentage * totalFrames) / 100, true);
-    } else {
-      return;
-    }
+  .setTween("#animate2", 1, { className: "+=up" })
+  .addTo(controller);
   
-  })
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: totalHeight*0.07547169811, offset: totalHeight*0.07547169811 })
+  
+  .setTween("#animate2", 1, { className: "+=upAll" })
+  .addTo(controller);
+  
+  
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: totalHeight*0.05 })
+  
+  .setTween("#animate", 1, { className: "+=animateLotti" })
+  .addTo(controller)
+  .on("enter", () => {  
+    window.addEventListener("scroll", handleScroll, true);  
+  });
 
-});
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: totalHeight*0.07547169811, offset: totalHeight*.95})
+
+  .setTween("#animate", 1, { className: "+=opactity-disabled upAllAll" })
+  .addTo(controller);
+
+  // new ScrollMagic.Scene({ triggerElement: ".trigger", duration: totalHeight*0.13207547169 , offset: totalHeight})
+
+  // .setTween("#last_section", 1, { className: "+=upAll opactity-active" })
+  // .addTo(controller);
+
+}
+
+
+makeScrollMagic();
+
+
 
 // new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 4150 })
 
@@ -156,12 +196,16 @@ new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: 1500 })
 // .setTween("#kuru_sole", 1, { className: "-=opactity-active" })
 // .addTo(controller);
 
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1000, offset: 11500 })
+function resetAll(){
+  window.controller.destroy(true);
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+  lottieProgress.goToAndStop(0, true);
+  window.removeEventListener("scroll", handleScroll, true);    
+}
 
-.setTween("#animate", 1, { className: "+=opactity-disabled upAllAll" })
-.addTo(controller);
-
-new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 1750, offset: 11500 })
-
-.setTween("#last_section", 1, { className: "+=upAll opactity-active" })
-.addTo(controller);
+setTimeout(() => {
+  // makeScrollMagic();
+}, 5000);

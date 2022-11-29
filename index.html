@@ -14,6 +14,11 @@
   <body class="min-h-screen">    
 
     <style>
+
+      html {
+        scroll-behavior: smooth;
+      }
+
       .up{
         transform: translateY(50%);
       }
@@ -52,16 +57,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js" integrity="sha512-yAr4fN9WZH6hESbOwoFZGtSgOP+LSZbs/JeoDr02pOX4yUFfI++qC9YwIQXIGffhnzliykJtdWTV/v3PxSz8aw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.8.1/smooth-scrollbar.js" integrity="sha512-yn9N2uBs4OocMUaJ9wZK6ELv+qXIULoRa7IvOsGz2wqWQRt8mNqU1L2I9Fau24PPxEKlGxuEDkRKvsanwAWUYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <div class="min-h-[200px]"></div>
+    
+    <div class="fixed bg-black top-8 left-8 w-[500px] h-auto px-4 py-5 z-[5] rounded-[8px] text-white flex flex-col space-y-5">  
 
-    <div id="set-height" class="block h-[13250px] relative trigger">
+      <h1 class="text-[20px] font-bold capitalize text-center">
+        Select Velocity
+      </h1>      
+
+      <div class="flex items-center space-x-5">
+        <p class="text-sm font-semibold capitalize">Faster</p>
+        <input id="velocity_value" class="accent-white w-[80%]" value="20" type="range" name="velocity" min="0" max="20" step="1" id="">        
+        <p class="text-sm font-semibold capitalize">Lower</p>
+      </div>
+
+      <button id="save_value" class="bg-white rounded-[5px] max-w-max mx-auto block px-4 py-2 text-black font-semibold cursor-pointer">
+        Save
+      </button>
+      
+    </div>
+
+
+    <div id="set-height" class="block relative trigger">
 
       <div id="wrapper" class="sticky top-0 w-full h-screen bg-white">
         <div class="relative wrapper-child w-full h-full flex flex-col justify-center items-center max-w-full overflow-hidden translate-y-0 md:!translate-y-0">
 
           <div id="animate" class="absolute opacity-100 z-[3] inset-0 w-full h-full flex flex-col justify-center md:justify-center lg:justify-end">
             <div class="lottie-progress pb-[50px] md:pb-0 relative md:max-w-full transform scale-[1.0666] min-w-[375px] max-w-[375px] md:scale-1 md:w-[483px] lg:w-[678px] mx-auto">
-              <div class="absolute top-[-20px] max-w-[93.333vw] md:max-w-[100vw] md:top-[20px] lg:top-[50px] w-[99vw] left-[calc((400px-100vw)/2)] md:left-[calc((438px-100vw)/2)] lg:left-[calc((678px-100vw)/2)]">
+              <div class="absolute !hidden top-[-20px] max-w-[93.333vw] md:max-w-[100vw] md:top-[20px] lg:top-[50px] w-[99vw] left-[calc((400px-100vw)/2)] md:left-[calc((438px-100vw)/2)] lg:left-[calc((678px-100vw)/2)]">
                 <div class="flex flex-col md:max-w-[560px] lg:max-w-[438px] w-full mx-auto">
     
                   <h1 class="text-center font-semibold tracking-[-1.5px] capitalize text-[24px] mx-auto max-w-[243px] md:max-w-full md:text-[30px] lg:text-[40px] md:leading-[1] lg:leading-[1.2] md:mb-2.5 lg:mb-[11x]">
@@ -217,7 +240,7 @@
 
           </div>
 
-          <div id="last_section" class="absolute  z-[4] opacity-0 flex flex-col inset-0 w-full h-full justify-center items-center transform translate-y-[100%] px-4 md:px-5 lg:px-[72px]">
+          <div id="last_section" class="absolute !hidden  z-[4] opacity-0 flex flex-col inset-0 w-full h-full justify-center items-center transform translate-y-[100%] px-4 md:px-5 lg:px-[72px]">
 
             <div class="w-full items-center flex-col gap-[78px] md:gap-0 md:space-y-[54px] lg:space-y-0 lg:flex-row flex lg:space-x-[109px]" >
 
@@ -244,7 +267,7 @@
           
           </div>
 
-          <div id="animate2" class="transform translate-y-[100%] h-full bg-[black] w-full" ></div>
+          <div id="animate2" class="transform translate-y-[100%] h-full bg-neutral-800 w-full" ></div>
 
         </div>
       </div>      
