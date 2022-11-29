@@ -3,6 +3,12 @@ import './style.css'
 window.minHeight = 6625;
 window.totalHeight = 6625;
 
+const velocity_value = document.querySelector("#velocity_value");
+velocity_value.onchange = e => {
+  const read_value = document.querySelector("#read_value");
+  read_value.textContent = e.target.value;
+}
+
 const save_value_button = document.querySelector("#save_value");
 save_value_button.onclick = e => {
   e.preventDefault();
