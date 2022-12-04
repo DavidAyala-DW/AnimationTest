@@ -1,45 +1,60 @@
 import './style.css'
 
-window.minHeight = 3312.5;
-window.totalHeight = 3312.5;
-window.bg_color = "#262626";
-
-const velocity_value = document.querySelector("#velocity_value");
-velocity_value.onchange = e => {
-  const read_value = document.querySelector("#read_value");
-  read_value.textContent = e.target.value;
-}
-
-const color_value = document.querySelector("#color_value");
-color_value.onchange = e => {
-  const read_value = document.querySelector("#read_color_value");
-  window.bg_color = e.target.value;
-  read_value.textContent = e.target.value;
-}
-
-const save_value_button = document.querySelector("#save_value");
-save_value_button.onclick = e => {
-  e.preventDefault();
-  resetAll();
-  const velocity = document.querySelector("#velocity_value").value;
-  window.totalHeight = window.minHeight + window.minHeight*(velocity/10);
-  setHeight(window.totalHeight);
-  setColor(window.bg_color);
-  makeScrollMagic();
-}
+window.minHeight = 3643.75;
+window.globalHeight = 3643.75;
+window.accumulated_height = 0;
 
 function setHeight(height) {
   const set_height_el = document.querySelector("#set-height");
-  set_height_el.style.height = `${height}px`;
+  set_height_el.style.minHeight = `${height}px`;
 }
 
-function setColor(color) {
-  const set_height_el = document.querySelector("#animate2");
-  set_height_el.style.backgroundColor = color ;
+function lottiePosition(){
+
+  setTimeout(() => {
+
+    const lottie = document.querySelector(".lottie-progress svg");
+    const lottieWrapper = document.querySelector(".lottie-progress-parent");
+    const alternImage = document.querySelector("#alternImage");
+    let topValue;
+    const topValueList = {
+      "desktop": "58%",
+      "tablet": "52%",
+      "mobile": "46.5%"
+    }
+
+    if(lottie.clientHeight != 0){
+      lottieWrapper.style.height = `${lottie.clientHeight*1.066}px`;
+    }else{
+      lottieWrapper.style.height = `${alternImage.clientHeight*1.066}px`;
+    }
+      
+    if(window.innerWidth >= 1024){
+      topValue = topValueList["desktop"];
+    }
+  
+    if(window.innerWidth < 1024 && window.innerHeight >= 768){
+      topValue = topValueList["tablet"];
+    }
+  
+    if(window.innerWidth < 768){
+      topValue = topValueList["mobile"];
+    }
+  
+    if(lottie.clientHeight != 0){
+      lottieWrapper.style.top = `calc(${topValue} - ${lottie.clientHeight*1.066/2}px )`;
+    }else{
+      lottieWrapper.style.top = `calc(${topValue} - ${alternImage.clientHeight*1.066/2}px )`;
+    }
+
+  }, 100);
+
 }
 
-setHeight(window.totalHeight);
-setColor(window.bg_color);
+lottiePosition();
+window.addEventListener("resize", lottiePosition);
+
+setHeight(window.globalHeight);
 
 let lottieProgress = lottie.loadAnimation({
   container: document.querySelector(".lottie-progress"),
@@ -50,25 +65,19 @@ let lottieProgress = lottie.loadAnimation({
   });
 
 function handleScroll(h){
-
-  let totalHeight = window.totalHeight*.6; // replace to window variable
-  let scrollFromTop = window.scrollY;
+  let totalHeight = window.globalHeight*.35; // 35% only first animation, 25% only second animation
+  let scrollFromTop = (window.scrollY + window.innerHeight/2) - window.globalHeight*0.15;
+  if(scrollFromTop <= 0 || scrollFromTop >= window.globalHeight*0.60) return;
   let totalFrames = lottieProgress.totalFrames;
   let scrollPercentage;
   if(scrollFromTop >= totalHeight){
     lottieProgress.setDirection(-1);
     const difference = scrollFromTop - totalHeight;
-    console.log(totalHeight - difference);
-    scrollPercentage = ( (totalHeight - difference)/4 * 100) / totalHeight;
-    console.log(scrollPercentage,"reverse");
+    scrollPercentage = ( (totalHeight - difference)/3 * 100) / totalHeight;
   }else{
     scrollPercentage = (scrollFromTop * 100) / totalHeight;
-    console.log(scrollPercentage);
   }
-  
-
   // Check if the current frame is the last frame. If it's the last frame, do nothing. This prevents showing the empty frame at the end. Thanks Pauline for pointing out.
-  // console.log((scrollPercentage * totalFrames) / 100 < totalFrames);
   if ((scrollPercentage * totalFrames) / 100 < totalFrames) {
     lottieProgress.goToAndStop((scrollPercentage * totalFrames) / 100, true);
   } else {
@@ -79,154 +88,137 @@ function handleScroll(h){
 function makeScrollMagic(){
 
   window.controller = new ScrollMagic.Controller();      
+
+  //Banner
    
-  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: totalHeight*0.07547169811, offset: totalHeight*0.03773584905 })
-  
-  .setTween("#animate2", 1, { className: "+=up" })
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: 0 })  
+  .setTween(".trigger", 1, { className: "+=init" })
   .addTo(controller);
   
-  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: totalHeight*0.07547169811, offset: totalHeight*0.07547169811 })
-  
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.125, offset: window.innerHeight*.50 })  
   .setTween("#animate2", 1, { className: "+=upAll" })
   .addTo(controller);
-  
-  
-  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: totalHeight*0.05 })
-  
+
+  // Altern Image
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.05, offset: window.globalHeight*0.15 })  
+  .setTween(".lottie-progress-parent", 1, { className: "-=lottie-progress-hide" })
+  .addTo(controller)
+  .on("enter", () => {  
+    window.addEventListener("scroll", handleScroll, true);  
+  });
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.05, offset: window.globalHeight*0.15 })  
+  .setTween("#alternImage", 1, { className: "+=alternImage-hide" })
+  .addTo(controller)
+  .on("enter", () => {  
+    window.addEventListener("scroll", handleScroll, true);  
+  });
+
+  //Shoe
+      
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 0, offset: window.globalHeight*0.15 })  
   .setTween("#animate", 1, { className: "+=animateLotti" })
   .addTo(controller)
   .on("enter", () => {  
     window.addEventListener("scroll", handleScroll, true);  
   });
 
-  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: totalHeight*0.07547169811, offset: totalHeight*.95})
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.12, offset: window.globalHeight*0.15 })  
+  .setTween("#heading", 1, { className: "+=heading-translate" })
+  .addTo(controller)
 
-  .setTween("#animate", 1, { className: "+=opactity-disabled upAllAll" })
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.1, offset: window.globalHeight*0.75 })  
+  .setTween("#animate", 1, { className: "+=upAllAll" })
+  .addTo(controller)
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.02, offset: window.globalHeight*0.625 })  
+  .setTween("#heading", 1, { className: "+=heading-translate-none" })
+  .addTo(controller)
+
+  //Ultimate Insole
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: window.globalHeight*0.24 }) //
+  .setTween("#ultimate_insole", 1, { className: "+=opactity-active" })
   .addTo(controller);
 
-  // new ScrollMagic.Scene({ triggerElement: ".trigger", duration: totalHeight*0.13207547169 , offset: totalHeight})
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: (window.globalHeight*0.015 + window.globalHeight*0.24) })
+  .setTween("#ultimate_insole", 1, { className: "+=active_card" })
+  .addTo(controller);
 
-  // .setTween("#last_section", 1, { className: "+=upAll opactity-active" })
-  // .addTo(controller);
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: window.globalHeight*0.24 })
+  .setTween("#ultimate_insole_content", 1, { className: "+=opactity-active" })
+  .addTo(controller);
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: window.globalHeight*0.325 })
+  .setTween("#ultimate_insole_content", 1, { className: "-=opactity-active" })
+  .addTo(controller);
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: window.globalHeight*0.325 })
+  .setTween("#ultimate_insole", 1, { className: "-=active_card" })
+  .addTo(controller);
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: (window.globalHeight*0.495 + window.globalHeight*0.015) })
+  .setTween("#ultimate_insole", 1, { className: "-=opactity-active" })
+  .addTo(controller);
+
+  //kuru_cloud
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: window.globalHeight*0.24 })
+  .setTween("#kuru_cloud", 1, { className: "+=opactity-active" })
+  .addTo(controller);
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: window.globalHeight*0.325 })
+  .setTween("#kuru_cloud", 1, { className: "+=active_card" })
+  .addTo(controller);
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: window.globalHeight*0.425 })
+  .setTween("#kuru_cloud", 1, { className: "-=active_card" })
+  .addTo(controller);
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: window.globalHeight*0.325 })
+  .setTween("#kuru_cloud_content", 1, { className: "+=opactity-active" })
+  .addTo(controller);
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: window.globalHeight*0.425 })
+  .setTween("#kuru_cloud_content", 1, { className: "-=opactity-active" })
+  .addTo(controller);
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: (window.globalHeight*0.495 + window.globalHeight*0.015) })
+  .setTween("#kuru_cloud", 1, { className: "-=opactity-active" })
+  .addTo(controller);
+
+  //Sole
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: window.globalHeight*0.24 })
+  .setTween("#kuru_sole", 1, { className: "+=opactity-active" })
+  .addTo(controller);
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: window.globalHeight*0.425 })
+  .setTween("#kuru_sole", 1, { className: "+=active_card" })
+  .addTo(controller);
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: window.globalHeight*0.495 })
+  .setTween("#kuru_sole", 1, { className: "-=active_card" })
+  .addTo(controller);
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: window.globalHeight*0.425 })
+  .setTween("#kuru_sole_content", 1, { className: "+=opactity-active" })
+  .addTo(controller);
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: window.globalHeight*0.495 })
+  .setTween("#kuru_sole_content", 1, { className: "-=opactity-active" })
+  .addTo(controller);
+
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.015, offset: (window.globalHeight*0.495 + window.globalHeight*0.015) })
+  .setTween("#kuru_sole", 1, { className: "-=opactity-active" })
+  .addTo(controller);
+
+  //Last Content
+  new ScrollMagic.Scene({ triggerElement: ".trigger", duration: window.globalHeight*0.10, offset: window.globalHeight*0.74})
+  .setTween("#last_section", 1, { className: "+=upAll opactity-active" })
+  .addTo(controller);
 
 }
-
 
 makeScrollMagic();
-
-
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 4150 })
-
-// .setTween("#ultimate_insole", 1, { className: "+=opactity-active" })
-// .addTo(controller);
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 4150 })
-
-// .setTween("#kuru_cloud", 1, { className: "+=opactity-active" })
-// .addTo(controller);
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 2000, offset: 4150 })
-
-// .setTween("#kuru_sole", 1, { className: "+=opactity-active" })
-// .addTo(controller);
-
-// //Content
-
-// //Ultimate Insole
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 3200, offset: 4800 })
-
-// .setTween("#ultimate_insole", 1, { className: "+=active_card" })
-// .addTo(controller);
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 4800 })
-
-// .setTween("#ultimate_insole_content", 1, { className: "+=opactity-active" })
-// .addTo(controller);
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 9000 })
-
-// .setTween("#ultimate_insole", 1, { className: "-=active_card" })
-// .addTo(controller);
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 9000 })
-
-// .setTween("#ultimate_insole_content", 1, { className: "-=opactity-active" })
-// .addTo(controller);
-
-// //kuru_cloud
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 5500, offset: 9000 })
-
-// .setTween("#kuru_cloud", 1, { className: "+=active_card" })
-// .addTo(controller);
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 9000 })
-
-// .setTween("#kuru_cloud_content", 1, { className: "+=opactity-active"  })
-// .addTo(controller);
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 14300 })
-
-// .setTween("#kuru_cloud", 1, { className: "-=active_card" })
-// .addTo(controller);
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 14300 })
-
-// .setTween("#kuru_cloud_content", 1, { className: "-=opactity-active"  })
-// .addTo(controller);
-
-// //Sole
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 5700, offset: 14300 })
-
-// .setTween("#kuru_sole", 1, { className: "+=active_card" })
-// .addTo(controller);
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 14300 })
-
-// .setTween("#kuru_sole_content", 1, { className: "+=opactity-active"  })
-// .addTo(controller);
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 19800 })
-
-// .setTween("#kuru_sole", 1, { className: "-=active_card" })
-// .addTo(controller);
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 200, offset: 19800 })
-
-// .setTween("#kuru_sole_content", 1, { className: "-=opactity-active"  })
-// .addTo(controller);
-
-
-// //Clear All
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 20000 })
-
-// .setTween("#ultimate_insole", 1, { className: "-=opactity-active" })
-// .addTo(controller);
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 20000 })
-
-// .setTween("#kuru_cloud", 1, { className: "-=opactity-active" })
-// .addTo(controller);
-
-// new ScrollMagic.Scene({ triggerElement: ".trigger", duration: 500, offset: 20000 })
-
-// .setTween("#kuru_sole", 1, { className: "-=opactity-active" })
-// .addTo(controller);
-
-function resetAll(){
-  window.controller.destroy(true);
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
-  lottieProgress.goToAndStop(0, true);
-  window.removeEventListener("scroll", handleScroll, true);    
-}
-
-setTimeout(() => {
-  // makeScrollMagic();
-}, 5000);
